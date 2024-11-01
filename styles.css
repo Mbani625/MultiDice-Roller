@@ -5,8 +5,9 @@ body {
   text-align: center;
   margin: 0;
   padding: 20px;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
+  min-height: 100vh;
 }
 
 /* Galaxy Background */
@@ -114,8 +115,11 @@ body::before {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-bottom: 20px;
   position: relative;
   z-index: 1;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 /* Container Styling */
@@ -194,10 +198,12 @@ body::before {
   margin-bottom: 5px;
 }
 
+/* Adjusted Plus and Minus Buttons */
 .quantity-buttons {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px; /* Adds space between buttons */
+  width: 100%;
 }
 
 .quantity-buttons button {
@@ -206,9 +212,10 @@ body::before {
   color: #2e1a17;
   font-size: 20px;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 100%; /* Full width of container */
+  height: 40px; /* Increased height for better visibility */
   border-radius: 10px;
+  margin: 5px 0; /* 5px margin on top and bottom */
 }
 
 /* Center Roll Dice Button in the Table */
@@ -271,6 +278,6 @@ td {
   }
 
   .dice-column {
-    margin: 0; /* Remove margin for grid alignment */
+    margin: 0;
   }
 }
