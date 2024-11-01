@@ -14,6 +14,33 @@ body {
   touch-action: manipulation; /* Prevent double-tap zoom */
 }
 
+/* Results Container Styling */
+.results {
+  margin-top: 20px;
+  background-color: rgba(61, 30, 23, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* Mobile Styling */
+@media (max-width: 600px) {
+  .dice-selection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .dice-column {
+    margin: 0;
+  }
+
+  /* Add margin to the results container on mobile */
+  .results {
+    margin: 20px 10px; /* Adds space around results on mobile */
+  }
+}
+
 /* Sparkling Stars */
 @keyframes sparkle {
   0%,
