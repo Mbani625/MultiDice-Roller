@@ -1,0 +1,148 @@
+/* General Styling */
+body {
+    font-family: 'Garamond', serif;
+    background-color: #2e1a17;
+    color: #f4e2d1;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: #f39c12;
+    text-shadow: 0 0 10px #e67e22;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #3d1e17;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(243, 156, 18, 0.6);
+}
+
+/* Dice Selection Styling */
+.dice-selection {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.dice-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Dice Button Styling with Shadow and Bold Font */
+.dice-button {
+    background-color: #c0392b;
+    border: 2px solid #e74c3c;
+    padding: 10px 15px;
+    color: #fceabb;
+    font-size: 16px;
+    font-weight: bold; /* Bold font */
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: border-color 0.5s ease-in-out;
+    animation: fadeBorder 2s infinite;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
+}
+.dice-button:hover {
+    background-color: #e74c3c;
+}
+
+/* Button Border Animation */
+@keyframes fadeBorder {
+    0% {
+        border-color: #c0392b;
+    }
+    50% {
+        border-color: #f39c12;
+    }
+    100% {
+        border-color: #c0392b;
+    }
+}
+
+/* Quantity Input Styling */
+.quantity-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7f2b25;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 60px;
+}
+
+.quantity-input input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.quantity-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.quantity-buttons button {
+    background-color: #f39c12;
+    border: none;
+    color: #2e1a17;
+    font-size: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+/* Center Roll Dice Button in the Table */
+.roll-button-row {
+    margin-top: 20px;
+}
+
+.roll-dice {
+    background-color: #c0392b;
+    color: #fceabb;
+    font-weight: bold;
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    margin: auto;
+    display: block;
+}
+.roll-dice:hover {
+    background-color: #e74c3c;
+}
+
+/* Result Table Styling */
+.results {
+    margin-top: 20px;
+    background-color: #3d1e17;
+    padding: 10px;
+    border-radius: 5px;
+}
+table {
+    width: 100%;
+    color: #f4e2d1;
+    margin-top: 10px;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+
+/* Highlight for Highest Roll */
+.highlight {
+    color: #f39c12;
+    font-weight: bold;
+    background-color: rgba(243, 156, 18, 0.2);
+}

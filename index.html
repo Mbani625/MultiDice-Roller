@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Fire Dice Roller</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Dragon's Fire Dice Roller</h1>
+
+    <!-- Dice Selection and Quantity Inputs in a Column Layout -->
+    <div class="dice-selection">
+        <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('D4')">D4</div>
+            <div class="quantity-input" id="input-D4" style="display: none;">
+                <input type="text" id="D4" value="0" readonly>
+                <div class="quantity-buttons">
+                    <button onclick="adjustDiceCount('D4', 1)">+</button>
+                    <button onclick="adjustDiceCount('D4', -1)">-</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('D6')">D6</div>
+            <div class="quantity-input" id="input-D6" style="display: none;">
+                <input type="text" id="D6" value="0" readonly>
+                <div class="quantity-buttons">
+                    <button onclick="adjustDiceCount('D6', 1)">+</button>
+                    <button onclick="adjustDiceCount('D6', -1)">-</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('D8')">D8</div>
+            <div class="quantity-input" id="input-D8" style="display: none;">
+                <input type="text" id="D8" value="0" readonly>
+                <div class="quantity-buttons">
+                    <button onclick="adjustDiceCount('D8', 1)">+</button>
+                    <button onclick="adjustDiceCount('D8', -1)">-</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('D10')">D10</div>
+            <div class="quantity-input" id="input-D10" style="display: none;">
+                <input type="text" id="D10" value="0" readonly>
+                <div class="quantity-buttons">
+                    <button onclick="adjustDiceCount('D10', 1)">+</button>
+                    <button onclick="adjustDiceCount('D10', -1)">-</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('D12')">D12</div>
+            <div class="quantity-input" id="input-D12" style="display: none;">
+                <input type="text" id="D12" value="0" readonly>
+                <div class="quantity-buttons">
+                    <button onclick="adjustDiceCount('D12', 1)">+</button>
+                    <button onclick="adjustDiceCount('D12', -1)">-</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('D20')">D20</div>
+            <div class="quantity-input" id="input-D20" style="display: none;">
+                <input type="text" id="D20" value="0" readonly>
+                <div class="quantity-buttons">
+                    <button onclick="adjustDiceCount('D20', 1)">+</button>
+                    <button onclick="adjustDiceCount('D20', -1)">-</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Centered Roll Dice Button Row -->
+    <tr class="roll-button-row">
+        <td colspan="2" style="text-align: center;">
+            <button class="dice-button roll-dice" onclick="rollDice()" id="rollButton" style="display: none;">Roll Dice</button>
+        </td>
+    </tr>
+    <!-- Results Table -->
+    <div class="results" id="resultsTable" style="display: none;">
+        <h2>Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dice Type</th>
+                    <th>Individual Roll</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+        </table>
+        <h3 id="grandTotal">Grand Total: 0</h3>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
