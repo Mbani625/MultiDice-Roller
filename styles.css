@@ -124,7 +124,7 @@ body::before {
   width: 100%;
   background-color: rgba(61, 30, 23, 0.5);
   padding: 20px;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(243, 156, 18, 0.6);
 }
 
@@ -152,7 +152,7 @@ body::before {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
   margin-bottom: 5px;
   transition: border-color 0.5s ease-in-out;
   animation: fadeBorder 2s infinite;
@@ -182,7 +182,7 @@ body::before {
   align-items: center;
   background-color: #7f2b25;
   padding: 5px;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
   width: 100%;
   max-width: 60px;
 }
@@ -208,7 +208,7 @@ body::before {
   cursor: pointer;
   width: 30px;
   height: 30px;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px;
 }
 
 /* Center Roll Dice Button in the Table */
@@ -235,24 +235,24 @@ body::before {
 /* Result Table Styling */
 .results {
   margin-top: 20px;
-  background-color: rgba(61, 30, 23, 0.5); /* 50% opacity */
+  background-color: rgba(61, 30, 23, 0.5);
   padding: 10px;
-  border-radius: 10px; /* Rounded corners */
-  font-size: 18px; /* Increased font size */
+  border-radius: 10px;
+  font-size: 18px;
 }
 
 table {
   width: 100%;
   color: #f4e2d1;
   margin-top: 10px;
-  font-size: 18px; /* Increased font size */
+  font-size: 18px;
 }
 
 th,
 td {
   padding: 5px;
   text-align: center;
-  border-radius: 10px; /* Rounded cell corners */
+  border-radius: 10px;
 }
 
 /* Highlight for Highest Roll */
@@ -260,4 +260,17 @@ td {
   color: #f39c12;
   font-weight: bold;
   background-color: rgba(243, 156, 18, 0.2);
+}
+
+/* Responsive Dice Button Layout for Mobile */
+@media (max-width: 600px) {
+  .dice-selection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .dice-column {
+    margin: 0; /* Remove margin for grid alignment */
+  }
 }
