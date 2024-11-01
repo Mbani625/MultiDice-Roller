@@ -8,18 +8,14 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
-}
-
-/* Galaxy Background */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: radial-gradient(circle, #001e3c 10%, #0a0a2a 60%, #000);
-  z-index: -2;
+  background: radial-gradient(
+    circle,
+    #001e3c 10%,
+    #0a0a2a 60%,
+    #000
+  ); /* Starry background */
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* Sparkling Stars */
@@ -129,7 +125,7 @@ body::before {
   background-color: rgba(61, 30, 23, 0.5);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 15px rgba(243, 156, 18, 0.6);
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2); /* Subtle white shadow */
 }
 
 /* Dice Selection Styling */
@@ -202,7 +198,7 @@ body::before {
 .quantity-buttons {
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Adds space between buttons */
+  gap: 5px;
   width: 100%;
 }
 
@@ -212,10 +208,10 @@ body::before {
   color: #2e1a17;
   font-size: 20px;
   cursor: pointer;
-  width: 100%; /* Full width of container */
-  height: 40px; /* Increased height for better visibility */
+  width: 100%;
+  height: 40px;
   border-radius: 10px;
-  margin: 5px 0; /* 5px margin on top and bottom */
+  margin: 5px 0;
 }
 
 /* Center Roll Dice Button in the Table */
