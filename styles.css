@@ -121,8 +121,8 @@ body {
 
 .explode-star {
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 60px;
+  height: 60px;
   background: white;
   border-radius: 50%;
   animation: explode 0.6s forwards;
