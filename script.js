@@ -1,12 +1,23 @@
 let diceCounts = {};
 
+// Toggle the quantity input for each dice type
 function selectDice(type) {
-  if (!diceCounts[type]) {
-    diceCounts[type] = 0;
-    document.getElementById(`input-${type}`).style.display = "flex";
+  const inputContainer = document.getElementById(`input-${type}`);
+
+  // Toggle display for the quantity input: open if closed, close if open
+  if (inputContainer.style.display === "flex") {
+    inputContainer.style.display = "none";
+    delete diceCounts[type]; // Remove dice count if closed
+  } else {
+    inputContainer.style.display = "flex";
+    if (!diceCounts[type]) diceCounts[type] = 0; // Initialize dice count if not already set
   }
+
+  // Update roll button visibility based on current dice counts
+  updateRollButtonVisibility();
 }
 
+// Adjust dice count and update the Roll button visibility
 function adjustDiceCount(type, change) {
   const input = document.getElementById(type);
   let count = parseInt(input.value) + change;
@@ -15,6 +26,11 @@ function adjustDiceCount(type, change) {
   input.value = count;
   diceCounts[type] = count;
 
+  updateRollButtonVisibility();
+}
+
+// Update the visibility of Roll button based on dice selection
+function updateRollButtonVisibility() {
   const totalDice = Object.values(diceCounts).reduce(
     (sum, value) => sum + value,
     0
@@ -23,6 +39,7 @@ function adjustDiceCount(type, change) {
     totalDice > 0 ? "block" : "none";
 }
 
+// Roll the dice and show results
 function rollDice() {
   let grandTotal = 0;
   const resultsBody = document.getElementById("resultsBody");
@@ -62,12 +79,10 @@ function rollDice() {
         highlightHighestRoll(rolls, diceType);
       }, 3000 + Math.random() * 1000);
 
-      if (diceType !== "FATE") {
-        grandTotal += rolls.reduce(
-          (sum, roll) => sum + (typeof roll === "string" ? 0 : roll),
-          0
-        );
-      }
+      grandTotal += rolls.reduce(
+        (sum, roll) => sum + (typeof roll === "number" ? roll : 0),
+        0
+      );
     }
   }
 
@@ -76,6 +91,7 @@ function rollDice() {
   ).innerText = `Grand Total: ${grandTotal}`;
 }
 
+// Animate the roll result with random values before settling on the final roll
 function animateRoll(finalRoll, rollId) {
   const rollCell = document.getElementById(rollId);
   let currentRoll =
@@ -97,6 +113,7 @@ function animateRoll(finalRoll, rollId) {
   }, 3000 + Math.random() * 1000);
 }
 
+// Highlight the highest roll for each dice type
 function highlightHighestRoll(rolls, diceType) {
   const maxRoll = Math.max(...rolls.filter((roll) => typeof roll === "number"));
   rolls.forEach((roll, index) => {

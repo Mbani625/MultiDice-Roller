@@ -105,19 +105,27 @@
             </div>
           </div>
         </div>
-        <!-- Centered Roll Dice Button Row -->
-        <tr class="roll-button-row">
-          <td colspan="2" style="text-align: center">
-            <button
-              class="dice-button roll-dice"
-              onclick="rollDice()"
-              id="rollButton"
-              style="display: none"
-            >
-              Roll Dice
-            </button>
-          </td>
-        </tr>
+
+        <!-- Centered Roll and Reset Dice Buttons Row -->
+        <div class="roll-button-row">
+          <button
+            class="dice-button roll-dice"
+            onclick="rollDice()"
+            id="rollButton"
+            style="display: none"
+          >
+            Roll Dice
+          </button>
+          <button
+            class="dice-button reset-dice"
+            onclick="resetDice()"
+            id="resetButton"
+            style="display: none"
+          >
+            Reset Rolls
+          </button>
+        </div>
+
         <!-- Results Table -->
         <div class="results" id="resultsTable" style="display: none">
           <h2>Results</h2>
