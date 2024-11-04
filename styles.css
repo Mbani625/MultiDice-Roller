@@ -146,9 +146,8 @@ body {
   max-width: 600px;
   width: 100%;
   background-color: rgba(61, 30, 23, 0.5);
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2); /* Subtle white shadow */
 }
 
 /* Dice Selection Styling */
@@ -208,13 +207,24 @@ body {
   border-radius: 10px;
   width: 100%;
   max-width: 60px;
+  border: 2px solid #e74c3c;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.5s ease-in-out;
+  animation: fadeBorder 2s infinite;
 }
 
 .quantity-input input {
-  width: 50px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   font-size: 16px;
+  font-weight: bold;
   margin-bottom: 5px;
+  border-radius: 10px;
+  border: 2px solid #e74c3c;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.5s ease-in-out;
+  animation: fadeBorder 2s infinite;
 }
 
 /* Adjusted Plus and Minus Buttons */
@@ -265,6 +275,11 @@ body {
   padding: 10px;
   border-radius: 10px;
   font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #e74c3c;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.5s ease-in-out;
+  animation: fadeBorder 2s infinite;
 }
 
 table {
