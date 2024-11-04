@@ -39,52 +39,69 @@ function updateRollButtonVisibility() {
     totalDice > 0 ? "block" : "none";
 }
 
-// Roll the dice and show results
 function rollDice() {
   let grandTotal = 0;
   const resultsBody = document.getElementById("resultsBody");
+  const diceTotalsContainer = document.getElementById("diceTotals");
   resultsBody.innerHTML = "";
+  diceTotalsContainer.innerHTML = ""; // Clear previous totals
   document.getElementById("resultsTable").style.display = "block";
 
-  for (const [diceType, count] of Object.entries(diceCounts)) {
+  // Define the order in which dice totals should appear
+  const diceOrder = ["D4", "D6", "D8", "D10", "D12", "D20", "FATE", "PERCENT"];
+
+  // Iterate over dice in the defined order
+  diceOrder.forEach((diceType) => {
+    const count = diceCounts[diceType] || 0;
     if (count > 0) {
       let rolls = [];
-      let total = 0;
+      let diceTotal = 0;
 
       for (let i = 0; i < count; i++) {
         let finalRoll;
         if (diceType === "FATE") {
-          const fateRoll = Math.floor(Math.random() * 3) - 1; // FATE: -1, 0, or 1
+          const fateRoll = Math.floor(Math.random() * 3) - 1; // Generates -1, 0, or +1
           finalRoll = fateRoll === -1 ? "-" : fateRoll === 1 ? "+" : "0";
+          diceTotal += fateRoll; // +1 for "+", -1 for "-", 0 for "0"
         } else if (diceType === "PERCENT") {
-          finalRoll = (Math.floor(Math.random() * 10) + 1) * 10; // % Dice: 10% to 100%
+          finalRoll = (Math.floor(Math.random() * 10) + 1) * 10; // 10% to 100%
         } else {
           const diceSides = parseInt(diceType.slice(1));
-          finalRoll = Math.floor(Math.random() * diceSides) + 1;
+          if (!isNaN(diceSides)) {
+            finalRoll = Math.floor(Math.random() * diceSides) + 1;
+            diceTotal += finalRoll; // Only add to diceTotal if it's a regular dice type
+          } else {
+            console.error(`Invalid dice type: ${diceType}`);
+            continue;
+          }
         }
 
         rolls.push(finalRoll);
 
-        // Create a new row for each individual dice roll
         const row = document.createElement("tr");
         row.innerHTML = `<td>${diceType}</td><td id="${diceType}-roll-${i}">${finalRoll}</td>`;
         resultsBody.appendChild(row);
 
-        // Animate the individual roll
         animateRoll(finalRoll, `${diceType}-roll-${i}`);
       }
 
-      // Delay to ensure all animations complete before highlighting
       setTimeout(() => {
         highlightHighestRoll(rolls, diceType);
       }, 3000 + Math.random() * 1000);
 
-      grandTotal += rolls.reduce(
-        (sum, roll) => sum + (typeof roll === "number" ? roll : 0),
-        0
-      );
+      // Display total for each dice type in the specified order except PERCENT
+      if (diceType !== "PERCENT") {
+        const diceTypeTotal = document.createElement("div");
+        diceTypeTotal.innerText = `${diceType} Total: ${diceTotal}`;
+        diceTotalsContainer.appendChild(diceTypeTotal);
+      }
+
+      // Add to grand total only if it's a regular dice type, excluding FATE and PERCENT
+      if (diceType !== "FATE" && diceType !== "PERCENT") {
+        grandTotal += diceTotal;
+      }
     }
-  }
+  });
 
   document.getElementById(
     "grandTotal"
