@@ -78,8 +78,33 @@
               </div>
             </div>
           </div>
-        </div>
 
+          <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('FATE')">FATE</div>
+            <div class="quantity-input" id="input-FATE" style="display: none">
+              <input type="text" id="FATE" value="0" readonly />
+              <div class="quantity-buttons">
+                <button onclick="adjustDiceCount('FATE', 1)">+</button>
+                <button onclick="adjustDiceCount('FATE', -1)">-</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dice-column">
+            <div class="dice-button" onclick="selectDice('PERCENT')">%</div>
+            <div
+              class="quantity-input"
+              id="input-PERCENT"
+              style="display: none"
+            >
+              <input type="text" id="PERCENT" value="0" readonly />
+              <div class="quantity-buttons">
+                <button onclick="adjustDiceCount('PERCENT', 1)">+</button>
+                <button onclick="adjustDiceCount('PERCENT', -1)">-</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Centered Roll Dice Button Row -->
         <tr class="roll-button-row">
           <td colspan="2" style="text-align: center">

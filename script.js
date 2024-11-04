@@ -31,12 +31,21 @@ function rollDice() {
 
   for (const [diceType, count] of Object.entries(diceCounts)) {
     if (count > 0) {
-      let diceSides = parseInt(diceType.slice(1));
-      let total = 0;
       let rolls = [];
+      let total = 0;
 
       for (let i = 0; i < count; i++) {
-        const finalRoll = Math.floor(Math.random() * diceSides) + 1;
+        let finalRoll;
+        if (diceType === "FATE") {
+          const fateRoll = Math.floor(Math.random() * 3) - 1; // FATE: -1, 0, or 1
+          finalRoll = fateRoll === -1 ? "-" : fateRoll === 1 ? "+" : "0";
+        } else if (diceType === "PERCENT") {
+          finalRoll = (Math.floor(Math.random() * 10) + 1) * 10; // % Dice: 10% to 100%
+        } else {
+          const diceSides = parseInt(diceType.slice(1));
+          finalRoll = Math.floor(Math.random() * diceSides) + 1;
+        }
+
         rolls.push(finalRoll);
 
         // Create a new row for each individual dice roll
@@ -53,7 +62,12 @@ function rollDice() {
         highlightHighestRoll(rolls, diceType);
       }, 3000 + Math.random() * 1000);
 
-      grandTotal += rolls.reduce((sum, roll) => sum + roll, 0);
+      if (diceType !== "FATE") {
+        grandTotal += rolls.reduce(
+          (sum, roll) => sum + (typeof roll === "string" ? 0 : roll),
+          0
+        );
+      }
     }
   }
 
@@ -64,11 +78,17 @@ function rollDice() {
 
 function animateRoll(finalRoll, rollId) {
   const rollCell = document.getElementById(rollId);
-  let currentRoll = Math.floor(Math.random() * finalRoll) + 1;
+  let currentRoll =
+    typeof finalRoll === "number"
+      ? Math.floor(Math.random() * finalRoll) + 1
+      : finalRoll;
 
   const interval = setInterval(() => {
     rollCell.innerText = currentRoll;
-    currentRoll = Math.floor(Math.random() * finalRoll) + 1;
+    currentRoll =
+      typeof finalRoll === "number"
+        ? Math.floor(Math.random() * finalRoll) + 1
+        : finalRoll;
   }, 100);
 
   setTimeout(() => {
@@ -78,7 +98,7 @@ function animateRoll(finalRoll, rollId) {
 }
 
 function highlightHighestRoll(rolls, diceType) {
-  const maxRoll = Math.max(...rolls);
+  const maxRoll = Math.max(...rolls.filter((roll) => typeof roll === "number"));
   rolls.forEach((roll, index) => {
     const rollCell = document.getElementById(`${diceType}-roll-${index}`);
     if (roll === maxRoll) {
@@ -172,6 +192,7 @@ function starExplosion(x, y) {
     explosion.remove();
   }, 600);
 }
+
 // Prevent double-tap zoom on mobile but allow rapid clicks
 let lastTouchEnd = 0;
 
